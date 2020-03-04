@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentación</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Documentación</h1>
+
+    <p>Api rest base url: <br> 
+    <b>http://localhost:3000/</b>
+
+    <div>
+
+        <h2>Realizando una búsqueda</h2>
+        <ul>
+            <li><b>Url:</b> <br>/api/items</li>
+            <li><b>Methods:</b> <br>[GET]</li>
+            <li><b>Parámetros:</b> <br>Se envía el string a buscar en una variable GET (query string) <b>?q=televisores</b></li>
+            <li><b>Devolución:</b><br>
+                Este endpoint retornará un json con los productos encontrados en base a la query realizada y un array de categorías con el cual crearemos el breadcrumb.
+            </li>
+        </ul>
+
+    </div>
+
+    <div>
+
+        <h2>Accediendo a un producto específico</h2>
+        <ul>
+            <li><b>Url:</b> <br>/api/items/:ID</li>
+            <li><b>Methods:</b> <br>[GET]</li>
+            <li><b>Parámetros:</b> <br>Se le envía la ID del producto como parámetro en la url, por ejemplo <b>/api/items/MLA670757536</b> </li>
+            <li><b>Devolución:</b><br>
+                Devolverá la información extendida del producto seleccionado.
+            </li>
+        </ul>
+
+    </div>
+
+</body>
+</html>

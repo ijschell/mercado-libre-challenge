@@ -1,0 +1,3 @@
+dentro de los items a devolver en el search endpoint
+
+se pide devolver "decimal", no entiendo bien esa petición.

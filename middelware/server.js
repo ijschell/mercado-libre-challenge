@@ -7,6 +7,13 @@ const port = 5000;
 
 app.use(express.static('public'));
 
+// enable coors to allow *
+app.use((request, response, next) => {
+    response.header('Access-Control-Allow-Origin', '*');
+    response.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+})
+
 // Index endpoints
 app.get('/', (request, response) => {
     // send a html file with information of the api rest

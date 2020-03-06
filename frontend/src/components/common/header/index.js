@@ -27,6 +27,7 @@ export class Header extends Component {
 
         // change redirect to true to go to result page
         if(this.state.search_box !== ''){
+            this.props.seach();
             this.props.history.push(`/items?search=${this.state.search_box}`)
         }
 
@@ -75,10 +76,10 @@ export class Header extends Component {
 // dispatch search
 const mapDispatchToProps = dispatch => (
     {
-        seach : (text) => dispatch({
+        seach : () => dispatch({
             component : 'search',
             type : 'searching',
-            payload : text
+            payload : ''
         })
     }
 )

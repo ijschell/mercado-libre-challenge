@@ -4,10 +4,7 @@ import { reducers } from './reducers';
 // init state
 const initialState = {
     // text to search
-    search : {
-        searching : false,
-        text_to_search : ''
-    }
+    searching : false
 };
 
 export const store = createStore(

@@ -25,19 +25,13 @@ const handleSearch = (state, action) => {
         case 'searching':
             return {
                 ...state,
-                search : {
-                    searching : true,
-                    text : action.payload
-                }
+                searching : true                     
             }
         break;
         case 'reset':
             return {
                 ...state,
-                search : {
-                    searching : false,
-                    text : ''
-                }
+                searching : false
             }
         break;
     }

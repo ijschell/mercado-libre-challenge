@@ -17,7 +17,9 @@ const search = (result_search, categories_breadcrumb) => {
             },
             picture: v.thumbnail,
             condition: v.condition,
-            free_shipping: v.shipping.free_shipping
+            free_shipping: v.shipping.free_shipping,
+            // extra data
+            address : v.address.state_name
         }
 
     })

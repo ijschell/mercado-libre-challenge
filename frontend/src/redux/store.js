@@ -4,7 +4,8 @@ import { reducers } from './reducers';
 // init state
 const initialState = {
     // text to search
-    searching : false
+    searching : false,
+    loader : false
 };
 
 export const store = createStore(

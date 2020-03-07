@@ -4,6 +4,9 @@ export const reducers = (state, action) => {
         case 'search':
             state = handleSearch(state, action)    
         break;
+        case 'loader':
+            state = handleLoader(state, action)    
+        break;
         // case 'userInfo':
         //     state = handleUserInfo(state, action)    
         // break;
@@ -32,6 +35,19 @@ const handleSearch = (state, action) => {
             return {
                 ...state,
                 searching : false
+            }
+        break;
+    }
+
+}
+
+const handleLoader = (state, action) => {
+
+    switch (action.type) {
+        case 'switch':
+            return {
+                ...state,
+                loader : action.payload                     
             }
         break;
     }

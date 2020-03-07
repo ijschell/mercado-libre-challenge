@@ -9,6 +9,7 @@ import { Provider } from 'react-redux';
 
 // components and pages
 import Header from './components/common/header';
+import LoaderLine from './components/common/loader';
 import HomePage from './components/pages/home';
 import SearchResultPage from './components/pages/search_result';
 import ProductExtendedPage from './components/pages/product_extended';
@@ -26,6 +27,9 @@ function App() {
 
         {/* import header */}
         <Header />
+
+        {/* {import loader} */}
+        <LoaderLine />
 
         {/* switch pages */}
         <Switch>

@@ -5,13 +5,6 @@ import './styles.scss';
 
 export class Breadcrumb extends Component {
 
-    constructor(){
-        super();
-        this.state = {
-
-        }
-    }
-
     // render breadcrumb
     render_breadcrumb(){
 

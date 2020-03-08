@@ -23,7 +23,9 @@ const search = (query, limit) => {
     // Endpoint to get search result limit to 4
     // https://api.mercadolibre.com/sites/MLA/search?q=remera&limit=4
 
-    return go_to_ml('api.mercadolibre.com', 'GET', `/sites/MLA/search?q=${query}&limit=${limit}`);
+    const query_search = encodeURI(query);
+
+    return go_to_ml('api.mercadolibre.com', 'GET', `/sites/MLA/search?q=${query_search}&limit=${limit}`);
 
 }
 

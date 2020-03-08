@@ -14,7 +14,9 @@ export class SearchResultPage extends Component {
             to_search : '',
             author : {},
             products : [],
-            breadcrumb : []
+            breadcrumb : [],
+            error : false,
+            error_message : ''
         }
     }
 
@@ -65,6 +67,9 @@ export class SearchResultPage extends Component {
 
             // set breadcrumb in global store
             this.props.set_breadcrumb(res.categories);
+
+            // set author name in box
+            this.props.set_author(res.author.name, res.author.lastname);
             
             this.setState({
                 author : res.author,
@@ -73,6 +78,10 @@ export class SearchResultPage extends Component {
 
         }).catch(err => {
             console.error(err)
+            this.setState({
+                error : true,
+                error_message : err.message
+            })
         }).finally(() => {
 
             // hide loader
@@ -80,6 +89,16 @@ export class SearchResultPage extends Component {
 
         })
 
+    }
+
+    componentDidUpdate(){
+
+        // if searching, execute call to Api
+        if(this.props.searching){
+            this.props.reset_seach();
+            this.change_to_search_again();
+        }
+        
     }
 
     // render products
@@ -137,15 +156,10 @@ export class SearchResultPage extends Component {
     }
 
     render() {
-
-        // if searching, execute call to Api
-        if(this.props.searching){
-            this.props.reset_seach();
-            this.change_to_search_again();
-        }
-
+       
         // render products
         if(this.state.products.length > 0){
+
             return (
                 <div className="container">
                     <div className="wrapper">
@@ -161,14 +175,25 @@ export class SearchResultPage extends Component {
                     </div>
                 </div>
             )
+
         }else{
-            return (
-                <div className="container">
-                    <div className="wrapper">
-                        Realiza una búsqueda.
+
+            if(this.state.error){
+
+                return (
+                    <div className="container">
+                        <div className="wrapper">
+                            {this.state.error_message}
+                        </div>
                     </div>
-                </div>
-            )
+                )
+
+            }else{
+
+                return false;
+
+            }
+
         }
 
     }
@@ -197,6 +222,14 @@ const mapDispatchToProps = dispatch => (
             component : 'breadcrumb',
             type : 'update',
             payload : categories
+        }),
+        set_author : (first_name, last_name) => dispatch({
+            component : 'author',
+            type : 'update',
+            payload : {
+                first_name,
+                last_name
+            }
         })
     }
 )

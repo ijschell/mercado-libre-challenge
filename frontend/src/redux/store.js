@@ -6,7 +6,11 @@ const initialState = {
     // text to search
     searching : false,
     loader : false,
-    breadcrumb : false
+    breadcrumb : false,
+    author : {
+        first_name : '',
+        last_name : ''
+    }
 };
 
 export const store = createStore(

@@ -13,7 +13,7 @@ const search = (result_search, categories_breadcrumb) => {
             price: {
                 currency: v.currency_id,
                 amount: v.price,
-                decimals: 0
+                decimals: 00
             },
             picture: v.thumbnail,
             condition: v.condition,
@@ -42,7 +42,7 @@ const product = (product_data, description_data, breadcrump_data) => {
         price : {
             currency : product_data.currency_id,
             amount : product_data.price,
-            decimals : 0,
+            decimals : 00,
         },
         picture : product_data.pictures[0].url,
         condition : product_data.condition,

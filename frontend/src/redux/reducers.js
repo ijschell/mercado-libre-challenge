@@ -10,6 +10,9 @@ export const reducers = (state, action) => {
         case 'breadcrumb':
             state = handleBreadcrumb(state, action)    
         break;
+        case 'author':
+            state = handleAuthor(state, action)    
+        break;
     }
 
     return state;
@@ -55,6 +58,19 @@ const handleBreadcrumb = (state, action) => {
             return {
                 ...state,
                 breadcrumb : action.payload                     
+            }
+        break;
+    }
+
+}
+
+const handleAuthor = (state, action) => {
+
+    switch (action.type) {
+        case 'update':
+            return {
+                ...state,
+                author : action.payload
             }
         break;
     }

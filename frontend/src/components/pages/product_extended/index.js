@@ -12,6 +12,8 @@ export class ProductExtendedPage extends Component {
         this.state = {
             id : null,
             product : null,
+            error : false,
+            error_message : ''
         }
     }
 
@@ -54,6 +56,9 @@ export class ProductExtendedPage extends Component {
             // set breadcrumb in global store
             this.props.set_breadcrumb(res.item.breadcrump_data);
 
+            // set author name in box
+            this.props.set_author(res.author.name, res.author.lastname);
+
             // save data in state
             this.setState({
                 product : res.item
@@ -61,6 +66,10 @@ export class ProductExtendedPage extends Component {
 
         }).catch(err => {
             console.error(err)
+            this.setState({
+                error : true,
+                error_message : err.message
+            })
         }).finally(() => {
 
             // hide loader
@@ -111,7 +120,9 @@ export class ProductExtendedPage extends Component {
                         </div>
 
                         <div className="button">
-
+                            <div>
+                                <span>Comprar</span>
+                            </div>
                         </div>
 
                     </div>
@@ -149,15 +160,31 @@ export class ProductExtendedPage extends Component {
 
         }else{
 
-            return (
-                <div className="container">
-                    <div className="wrapper">
-                        <div>
-                            No se ha seleccionado ningún producto.
+            if(this.state.error){
+
+                return (
+                    <div className="container">
+                        <div className="wrapper">
+                            <div>
+                                {this.state.error_message}
+                            </div>
                         </div>
                     </div>
-                </div>
-            )    
+                )
+
+            }else{
+
+                return (
+                    <div className="container">
+                        <div className="wrapper">
+                            <div>
+                                No se ha seleccionado ningún producto.
+                            </div>
+                        </div>
+                    </div>
+                )
+
+            }
 
         }
 
@@ -176,6 +203,14 @@ const mapDispatchToProps = dispatch => (
             component : 'breadcrumb',
             type : 'update',
             payload : categories
+        }),
+        set_author : (first_name, last_name) => dispatch({
+            component : 'author',
+            type : 'update',
+            payload : {
+                first_name,
+                last_name
+            }
         })
     }
 )

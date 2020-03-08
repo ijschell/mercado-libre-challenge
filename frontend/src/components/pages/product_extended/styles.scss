@@ -34,8 +34,18 @@
                 }
             }
             .button{
-                a{
-
+                margin-top: 20px;
+                > div{
+                    background: #3483fa;
+                    color: #fff;
+                    display: flex;
+                    height: 50px;
+                    border-radius: 4px;
+                    cursor: pointer;
+                    span{
+                        margin: auto;
+                        font-size: 17px;
+                    }
                 }
             }
 

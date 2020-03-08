@@ -7,15 +7,9 @@ export const reducers = (state, action) => {
         case 'loader':
             state = handleLoader(state, action)    
         break;
-        // case 'userInfo':
-        //     state = handleUserInfo(state, action)    
-        // break;
-        // case 'sidebar':
-        //     state = handleSidebar(state, action)    
-        // break;
-        // case 'navigation':
-        //     state = handleNavigation(state, action)    
-        // break;
+        case 'breadcrumb':
+            state = handleBreadcrumb(state, action)    
+        break;
     }
 
     return state;
@@ -48,6 +42,19 @@ const handleLoader = (state, action) => {
             return {
                 ...state,
                 loader : action.payload                     
+            }
+        break;
+    }
+
+}
+
+const handleBreadcrumb = (state, action) => {
+
+    switch (action.type) {
+        case 'update':
+            return {
+                ...state,
+                breadcrumb : action.payload                     
             }
         break;
     }

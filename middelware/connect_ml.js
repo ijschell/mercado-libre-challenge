@@ -35,9 +35,14 @@ const make_breadcrumb = (items) => {
 
     // check what category has more items
     var categories_ids = items.map((v) => {
+        
+        if(typeof(v) === 'string'){
+            v = JSON.parse(v);
+        }
+
         return v.category_id
     })
-
+    
     // now get the category most frequent
     const category = category_most_frequent(categories_ids);
 

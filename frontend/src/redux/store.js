@@ -5,7 +5,8 @@ import { reducers } from './reducers';
 const initialState = {
     // text to search
     searching : false,
-    loader : false
+    loader : false,
+    breadcrumb : false
 };
 
 export const store = createStore(

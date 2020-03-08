@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Link } from "react-router-dom";
 import { get_products } from './service/get';
+import Breadcrumb from '../../common/breadcrumb';
 import './styles.scss';
 import pin_map from './images/baseline_place_black_18dp.png';
-import arrow_right from './images/baseline_arrow_right_black_18dp.png';
 
 export class SearchResultPage extends Component {
 
@@ -62,11 +62,13 @@ export class SearchResultPage extends Component {
             }
             return res.json();
         }).then(res => {
+
+            // set breadcrumb in global store
+            this.props.set_breadcrumb(res.categories);
             
             this.setState({
                 author : res.author,
-                products : res.items,
-                breadcrumb : res.categories
+                products : res.items
             })
 
         }).catch(err => {
@@ -84,10 +86,6 @@ export class SearchResultPage extends Component {
     render_products(){
 
         return this.state.products.map((v, k) => {
-
-            console.log('------------------------------DEBUG------------------------------------')
-            console.log(v)
-            console.log('------------------------------DEBUG------------------------------------')
 
             const id = v.id;
             const picture = v.picture;
@@ -138,42 +136,6 @@ export class SearchResultPage extends Component {
 
     }
 
-    // render breadcrumb
-    render_breadcrumb(){
-
-        const breadcrumb = this.state.breadcrumb;
-
-        if(breadcrumb.length > 0){
-
-            return breadcrumb.map((v, k) => {
-
-                var result;
-                
-                // check is last to print arrow or not
-                if(k === (breadcrumb.length - 1)){
-                    result = (
-                        <div key={k} className="item_breadcrumb flex">
-                            <span><b>{v.name}</b></span>
-                        </div>
-                    );
-                }else{
-                    result = (
-                        <div key={k} className="item_breadcrumb flex">
-                            <span>{v.name}</span>
-                            <img src={arrow_right} alt="arrow_right" />
-                        </div>
-                    );
-                }
-
-                return result;
-
-            })
-
-        }
-
-    }
-
-
     render() {
 
         // if searching, execute call to Api
@@ -188,13 +150,11 @@ export class SearchResultPage extends Component {
                 <div className="container">
                     <div className="wrapper">
                         
-                        {/* print breadcrumb */}
-                        <div className="container_breadcrumb flex">
-                            {this.render_breadcrumb()}
-                        </div>
+                        {/* print breadcrumb */}                        
+                        <Breadcrumb />
 
                         {/* print products */}
-                        <div className="container_products">
+                        <div className="container_products internal_padding">
                             {this.render_products()}
                         </div>
 
@@ -232,6 +192,11 @@ const mapDispatchToProps = dispatch => (
             component : 'loader',
             type : 'switch',
             payload : bool
+        }),
+        set_breadcrumb : categories => dispatch({
+            component : 'breadcrumb',
+            type : 'update',
+            payload : categories
         })
     }
 )

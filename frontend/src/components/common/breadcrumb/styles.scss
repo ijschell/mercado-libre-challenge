@@ -1,0 +1,14 @@
+.container_breadcrumb{
+    padding: 0 0 10px 0;
+    .item_breadcrumb{
+        justify-items: center;
+        align-items: center;
+        span{
+            font-size: 11px;
+        }
+        img{
+            width: 15px;
+            opacity: 0.5;
+        }
+    }
+}

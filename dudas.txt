@@ -1,10 +1,12 @@
-dentro de los items a devolver en el search endpoint
+dentro de los items a devolver en el search endpoint se pide devolver "decimal", no entiendo bien esa petición, a no ser que se refiera a "parsear" el precio para tomarlo en otro key.
 
-se pide devolver "decimal", no entiendo bien esa petición.
 
 ------------
 
 Con respecto al render de la página de resultados, no logro ver en la imagen proporcionada como guía de diseño
 qué es lo que dice al final, creo que dice la ciudad donde es vendido el producto, de ser así no me coincide
-el json solicitado a armar como respuesta del endpoint con ese dato, no obstante vi que estaba por lo que en caso de
-necesitarlo no hay problemas.
+el json solicitado a armar como respuesta del endpoint con ese dato, no obstante vi que estaba en el endpoint de ML por lo que lo tomé y lo estoy devolviendo.
+
+----------
+
+En la página de descripción del artículo aparece el breadcrumb del producto, en el json solicitado no se pide devolver la categoría por lo que también la estaré enviando como agregado a lo solicitado.

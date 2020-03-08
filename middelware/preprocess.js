@@ -34,7 +34,7 @@ const search = (result_search, categories_breadcrumb) => {
 
 }
 
-const product = (product_data, description_data) => {
+const product = (product_data, description_data, breadcrump_data) => {
 
     const item = {
         id : product_data.id,
@@ -48,7 +48,8 @@ const product = (product_data, description_data) => {
         condition : product_data.condition,
         free_shipping : product_data.shipping.free_shipping,
         sold_quantity : product_data.sold_quantity,
-        description : description_data.plain_text
+        description : description_data.plain_text,
+        breadcrump_data
     };
 
     const result = {

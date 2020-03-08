@@ -1,11 +1,11 @@
 .wrapper{
-    padding: 10px 0;
+    // padding: 20px 0;
     .container_products{
         background: #fff;
-        padding: 10px;
         .product{
             border-bottom: solid 1px #eee;
             padding: 15px 0;
+            justify-content: stretch;
             &:last-child{
                 border-bottom: none;
             }
@@ -41,20 +41,6 @@
                         font-size: 14px;
                     }
                 }
-            }
-        }
-    }
-    .container_breadcrumb{
-        padding: 0 0 10px 0;
-        .item_breadcrumb{
-            justify-items: center;
-            align-items: center;
-            span{
-                font-size: 11px;
-            }
-            img{
-                width: 15px;
-                opacity: 0.5;
             }
         }
     }

@@ -77,11 +77,23 @@ app.get('/api/items/:id', (request, response) => {
         // get data and convert to object
         const product_data = JSON.parse(values[0].message.status_message);
         const description_data = JSON.parse(values[1].message.status_message);
+        connect_ml.make_breadcrumb([values[0].message.status_message]).then(res => {
 
-        // now go to preprocess data to make the json response
-        const message = preprocess.product(product_data, description_data);
+            const breadcrumb = JSON.parse(res.message.status_message)['path_from_root'];
 
-        response.status(200).send(message)
+            // now go to preprocess data to make the json response
+            const message = preprocess.product(product_data, description_data, breadcrumb);
+
+            response.status(200).send(message)
+
+        }).catch(err => {
+        
+            const message_error = send_error(err, 'Ocurrió un error intentando obtener las categorías.');
+            
+            // an error occurred, send the message
+            response.status(err.message.status_code).send(message_error)
+    
+        })
 
     }).catch(err => {
         

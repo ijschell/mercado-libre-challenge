@@ -70,6 +70,10 @@ export class SearchResultPage extends Component {
 
             // set author name in box
             this.props.set_author(res.author.name, res.author.lastname);
+
+            console.log('------------------------------DEBUG------------------------------------')
+            console.log(res.items)
+            console.log('------------------------------DEBUG------------------------------------')
             
             this.setState({
                 author : res.author,
@@ -113,7 +117,8 @@ export class SearchResultPage extends Component {
                 currency : v.price.currency,
                 // no debería "hardcodearlo" pero no lo he visto en el api de ML como para traerlo
                 symbol : '$',
-                amount : v.price.amount
+                amount : v.price.amount,
+                decimals : v.price.decimals
             };
             const address = v.address;
 
@@ -131,7 +136,7 @@ export class SearchResultPage extends Component {
                     <div className="content_price">
 
                         <div className="price" title={price.currency}>
-                            {price.symbol} {price.amount}
+                            {price.symbol} {price.amount}.{price.decimals}
                         </div>
 
                         <div className="title">

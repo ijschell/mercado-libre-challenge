@@ -33,7 +33,7 @@ export class Header extends Component {
 
     }
 
-    handleKeyDown(event){
+    handle_key_down(event){
 
         // if press enter go to search
         if(event.key === 'Enter'){            
@@ -58,7 +58,7 @@ export class Header extends Component {
                         <input 
                             type="text" 
                             onChange={(event) => this.searching(event)} 
-                            onKeyDown={(event) => this.handleKeyDown(event)}
+                            onKeyDown={(event) => this.handle_key_down(event)}
                             value={this.state.search_box} placeholder="Buscar productos y mucho más..."
                         />
                         <div onClick={() => this.go_to_search()}>
